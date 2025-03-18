@@ -1,6 +1,6 @@
 - Wallet integration & authentication
-  - Support Metamask
-  - Display connected wallet address and balance
+  - [x] Support Metamask
+  - [ ] Display connected wallet address and balance
 - POL
   - Add Polygon network to Metamask
   - Display POL balance
