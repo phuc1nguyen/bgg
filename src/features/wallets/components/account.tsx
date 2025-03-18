@@ -11,39 +11,37 @@ import {
 export function Account() {
   const { address } = useAccount();
   const chainId = useChainId();
-  const { chains, switchChain } = useSwitchChain();
+  const { chains, switchChain, isPending } = useSwitchChain();
   const { data: ensName } = useEnsName({ address });
   const { data: ensAvatar } = useEnsAvatar({ name: ensName! });
   const { data: balance } = useBalance({ address, chainId });
   const { disconnect } = useDisconnect();
+  const currentChain = chains.find((chain) => chain.id === chainId);
 
   return (
-    <div>
+    <>
       {ensAvatar && <img alt="ENS Avatar" src={ensAvatar} />}
-      <div>
-        <b>Switch network</b>:
-        {chains.map((chain) => (
-          <button key={chain.id} onClick={() => switchChain({ chainId: chain.id })}>
-            {chain.name}
-          </button>
-        ))}
+      {currentChain && <p>Current network: {currentChain.name}</p>}
+      <div className="flex items-center">
+        Switch network:
+        <div className="space-x-2">
+          {chains.map((chain) => (
+            <button
+              key={chain.id}
+              className="btn"
+              onClick={() => switchChain({ chainId: chain.id })}
+            >
+              {isPending && <span className="loading loading-spinner"></span>}
+              {chain.name}
+            </button>
+          ))}
+        </div>
       </div>
-      <p>
-        <b>Address</b>: {ensName ? `${ensName} (${address})` : address}
-      </p>
-      {balance && (
-        <>
-          <p>
-            <b>Balance</b>
-          </p>
-          <ul>
-            <li>Value: {balance.formatted}</li>
-            <li>Symbols: {balance.symbol}</li>
-            <li>Decimals: {balance.decimals}</li>
-          </ul>
-        </>
-      )}
-      <button onClick={() => disconnect()}>Disconnect</button>
-    </div>
+      <p>Address: {ensName ? `${ensName} (${address})` : address}</p>
+      {balance && <p>Balance: {balance.formatted}</p>}
+      <button className="btn btn-soft btn-error mt-8" onClick={() => disconnect()}>
+        Disconnect
+      </button>
+    </>
   );
 }

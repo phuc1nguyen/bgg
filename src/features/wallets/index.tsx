@@ -1,10 +1,7 @@
-import { useAccount } from 'wagmi';
 import { Account } from './components/account';
 import { WalletOptions } from './components/options';
 
-function ConnectWallet() {
-  const { isConnected } = useAccount();
-
+function ConnectWallet({ isConnected }: { isConnected: boolean }) {
   if (isConnected) return <Account />;
 
   return <WalletOptions />;
