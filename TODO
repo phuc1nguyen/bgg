@@ -4,14 +4,13 @@
 - POL
   - [x] Add Polygon network to Metamask
   - [x] Display POL balance
-  - [ ] Transfer POL to other wallet
+  - [x] Transfer POL to other wallet
+- Transaction handling
+  - Allow users to send ETH with custom gas fee
+  - Show transaction history from Polygonscan
 - USDT
   - Add USDT to wallet
   - Transfer USDT to other wallet
-- Transaction handling
-  - Show estimated gas fees before confirming transactions
-  - Allow users to send ETH with custom gas fee
-  - Show transaction history form Polygonscan
 - Smart contract integration (optional)
   - Deploy simple ERC-20 or ERC-721 contract
   - Read & update contract state (e.g., token balance, metadata)
