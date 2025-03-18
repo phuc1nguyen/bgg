@@ -1,10 +1,10 @@
 - Wallet integration & authentication
   - [x] Support Metamask
-  - [ ] Display connected wallet address and balance
+  - [x] Display connected wallet address and balance
 - POL
-  - Add Polygon network to Metamask
-  - Display POL balance
-  - Transfer POL to other wallet
+  - [x] Add Polygon network to Metamask
+  - [x] Display POL balance
+  - [ ] Transfer POL to other wallet
 - USDT
   - Add USDT to wallet
   - Transfer USDT to other wallet
